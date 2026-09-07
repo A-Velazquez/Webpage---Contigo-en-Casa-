@@ -1,0 +1,67 @@
+/*The style for the page title*/
+#tituloPagina {
+    display: flex;
+    justify-content: center;
+    font-size: 56px;
+    /*Using the papyrus font*/
+    font-family: "Comic Papyrus", "Comic Sans MS", Papyrus, sans-serif;
+    font-weight: bold;
+    /*Text color to contrast background image*/
+    color: #00d9ff;
+    margin-top: 200px;
+    margin-bottom: 20px;
+}
+
+#paginaTitulo {
+    background-image:
+        /*Añadir un gradiente-linear para que el texto en frente de la imagen se vea mejor*/
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+        url("../images/imagenTituloFondo.jpg");
+    /*Prevent the image from repeating*/
+    background-repeat: no-repeat;
+    /*Cover the entire container*/
+    background-size: cover;
+    /*Center the image to the container*/
+    background-position: center;
+
+    /*Añadirle sombra al texto para que sea legible*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+
+    /*Give the container a structure so it is visible*/
+    width: 70%;
+    min-height: 500px; 
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/*El contenedor de donación en la pagina de inicio*/
+/*Debe estar a lado de "paginaTitulo" y llenar el ancho*/
+#contenedorDonacion {
+    justify-content: center;
+    background-color:#1e3c5a;
+    box-sizing: border-box;
+    min-height: 500px; 
+    width: 30%;
+}
+
+/*Necesito esta parte para que el contenedor de donación y el contenedor de titulo de la pagina estén a lado del otro*/
+#contenedorInicio {
+    display: flex;
+}
+
+#botonDonacion {
+    background-color: #f2f2f2;
+    color: #1e3c5a;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 36px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 20px 40px;
+    border-radius: 8px;
+    font-weight: bold;
+
+    margin-left: 25px;
+    ;
+}
