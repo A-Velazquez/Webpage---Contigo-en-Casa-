@@ -1,0 +1,12 @@
+/* Banner Principal (Deccion de hero) */
+.hero-main {
+    background: linear-gradient(rgba(30, 60, 90, 0.85), rgba(30, 60, 90, 0.85)), 
+                url('../images/imagenTituloFondo.jpg') center/cover no-repeat;
+    min-height: 520px;
+}
+
+/* Módulo Lateral de Donación rápida */
+.hero-sidebar {
+    background-color: #162c43;
+    min-height: 520px;
+}

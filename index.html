@@ -4,50 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contigo en Casa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!--The "include" for the style.css file-->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/index.css">
     <!--The "include" for bootstrap features-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
 </head>
 <body>
-    <!--The bootstrap navbar-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="./index.html">Contigo en Casa</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./appointment.html">Hacer cita</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./donations.html">Donaciones</a>
-                        </li>
-                    </ul>
+    <!--The bootstrap navbar (hice algunos cambios)-->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary-custom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 d-flex align-items-center gap-2" href="./index.html">
+                <i class="bi bi-heart-pulse-fill text-warning"></i> Contigo en Casa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-2 fs-5">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" href="./index.html">Inicio</a>
+                    </li>
+                    <!-- Botón/Link resaltado a la Videoteca -->
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-bold" href="./videoteca.html">
+                            <i class="bi bi-play-circle-fill me-1"></i> Videoteca de Cuidados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="./appointment.html">Pedir Atención</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-warning fw-bold px-4 rounded-pill shadow-sm" href="./donations.html">
+                            <i class="bi bi-heart-fill me-1"></i> Donar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-lg-8 hero-main d-flex align-items-center">
+                    <div class="hero-content p-4 p-md-5">
+                        <span class="badge bg-light text-primary fs-6 mb-2 px-3 py-2 rounded-pill"> INADEJ . ARANDAS, Jalisco</span>
+                        <h1 class="display-4 fw-bold text-white mb-3"> Atención médica e integral en el hogar</h1>
+                        <p class="lead text-white-50 mb-4 fs-4">Llevamos rehabilitación física, nutrición y apoyo psicológico a personas con discapacidad y adultos mayores con problemas de movilidad</p>
+                        <a href="./videoteca.html" class="btn btn-warning btn-lg fw-bold px-4 py-3 shadow">
+                            <i class="bi bi-play-btn-fill me-2"></i> Ver Videos de Ejercicios y Masajes
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 hero-sidebar d-flex flex-column justify-content-center p-4 p-md-5 text-white">
+                    <div class="sidebar-content">
+                        <h2 class="fw-bold mb-3 fs-1">¡Ayúdanos a ayudar!</h2>
+                        <p class="fs-5 mb-4">Tu donación financia consultas domiciliarias, suplementos alimenticios y apoyo emocional para quienes no pueden trasladarse.</p>
+                        <a href="./donations.html" class="btn btn-light btn-lg w-100 fw-bold py-3 text-primary shadow-sm mb-3 fs-4">
+                            Haz tu donación
+                        </a>
+                        <small class="text-white-50 d-block text-center fs-6">100% transparente • Más de 30 años de experiencia</small>
+                    </div>
                 </div>
             </div>
-        </nav>
-    <!--This is where the navbar ends-->
+        </div>
+    </section>
 
-    <!--Contenedor para que las estructuras esten juntas-->
-    <div id="contenedorInicio">
-        <!--The page title with a background image-->
-        <div id="paginaTitulo">
-            <div class="containerInicio">
-                <h1 id="tituloPagina">Contigo en Casa</h1>
+    <!-- Esta parte es la info/justificacion del proyecto. Casi todo es info que vienen en la ficha del proyecto-->
+    <section class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark display-6">¿Por qué nace "Contigo en Casa"?</h2>
+                <p class="text-muted fs-5">Eliminando las barreras de transporte y pobreza en municipios fuera de la ZMG.</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-3 text-center rounded-4">
+                        <div class="card-body">
+                            <div class="icon-circle bg-primary-subtle text-primary mb-3 mx-auto">
+                                <i class="bi bi-geo-alt-fill fs-2"></i>
+                            </div>
+                            <h3 class="fw-bold h4">La Necesidad en Arandas</h3>
+                            <p class="text-muted">Más de 3,200 personas viven con alguna discapacidad. La mayoría no puede costear o trasladarse a un centro médico.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-3 text-center rounded-4">
+                        <div class="card-body">
+                            <div class="icon-circle bg-success-subtle text-success mb-3 mx-auto">
+                                <i class="bi bi-house-heart-fill fs-2"></i>
+                            </div>
+                            <h3 class="fw-bold h4">Visitas Domiciliarias</h3>
+                            <p class="text-muted">Llevamos especialistas de nutrición, terapia física y psicología directamente al hogar del paciente y su cuidador.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-3 text-center rounded-4">
+                        <div class="card-body">
+                            <div class="icon-circle bg-warning-subtle text-dark mb-3 mx-auto">
+                                <i class="bi bi-laptop-fill fs-2"></i>
+                            </div>
+                            <h3 class="fw-bold h4">Acceso Remoto Digital</h3>
+                            <p class="text-muted">Para quienes viven fuera del rango de visitas presenciales, nuestros médicos graban videos interactivos con guías de masaje y salud.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Los pilares del programa -->
+            <div class="bg-white rounded-4 shadow-sm p-4 p-md-5 border">
+                <h3 class="fw-bold text-center mb-4">Nuestros 3 Pilares de Atención</h3>
+                <div class="row g-4">
+                    <div class="col-md-4 d-flex align-items-start gap-3">
+                        <i class="bi bi-activity text-primary fs-1"></i>
+                        <div>
+                            <h5 class="fw-bold mb-1 fs-5">Rehabilitación Física</h5>
+                            <p class="text-muted small">Ejercicios de movilidad, fortalecimiento muscular y capacitación práctica al cuidador primario.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-start gap-3">
+                        <i class="bi bi-apple text-success fs-1"></i>
+                        <div>
+                            <h5 class="fw-bold mb-1 fs-5">Nutrición Especializada</h5>
+                            <p class="text-muted small">Valoración nutricional continua y entrega de suplementación adecuada para cada paciente.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-start gap-3">
+                        <i class="bi bi-emoji-smile text-warning fs-1"></i>
+                        <div>
+                            <h5 class="fw-bold mb-1 fs-5">Salud Mental y Psicología</h5>
+                            <p class="text-muted small">Acompañamiento psicológico individual para reducir estrés y ansiedad en pacientes y cuidadores.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!--The aspect of the start to invite for donations-->
-        <div id="contenedorDonacion">
-                <h2 style="color: white; font-weight: bold; font-size:36px; margin: 25px;">¡Ayúdanos a ayudar!</h2>
-                <p style="color: white; margin: 25px; margin-bottom: 70px; font-size: 26px;">Tu donación puede marcar la diferencia en la vida de quienes más lo necesitan. Con tu apoyo, podemos brindar asistencia a familias y personas en situación de vulnerabilidad.</p>
-                <a href="./donations.html" id="botonDonacion">Haz tu donación</a>
+    <!-- footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="fw-bold mb-1">INADEJ - Instituto Alteño para el Desarrollo de Jalisco</h5>
+                    <p class="small text-white-50 mb-0">Programa Contigo en Casa • Arandas, Jalisco</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="./videoteca.html" class="text-white me-3 text-decoration-none">Videoteca</a>
+                    <a href="./donations.html" class="text-white me-3 text-decoration-none">Donaciones</a>
+                    <a href="./appointment.html" class="text-white text-decoration-none">Contacto</a>
+                </div>
+            </div>
         </div>
-    </div>    
+    </footer>
+   
     
     
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

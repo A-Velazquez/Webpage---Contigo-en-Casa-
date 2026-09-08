@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videoteca de Cuidados - Contigo en Casa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/videoteca.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary-custom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 d-flex align-items-center gap-2" href="./index.html">
+                <i class="bi bi-heart-pulse-fill text-warning"></i> Contigo en Casa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-2 fs-5">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="./index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold text-warning" href="./videoteca.html">
+                            <i class="bi bi-play-circle-fill me-1"></i> Videoteca de Cuidados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="./appointment.html">Pedir Atención</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-warning fw-bold px-4 rounded-pill shadow-sm" href="./donations.html">
+                            <i class="bi bi-heart-fill me-1"></i> Donar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado de la Videoteca -->
+    <header class="bg-primary-custom text-white py-5 text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill mb-2 fw-bold">Acceso Gratuito y Libre</span>
+            <h1 class="display-5 fw-bold mb-3">Videoteca de Ejercicios y Cuidados en Casa</h1>
+            <p class="lead max-w-700 mx-auto fs-5 text-white-50">
+                Aprende técnicas sencillas de masajes, ejercicios de rehabilitación y consejos prácticos grabados por nuestros doctores y especialistas de INADEJ.
+            </p>
+        </div>
+    </header>
+
+    <!-- Sección de Videos y Filtros -->
+    <main class="py-5 bg-light">
+        <div class="container">
+            
+            <!-- Barra de Búsqueda y Filtros (todavia no sirven, es para darse una idea) -->
+            <div class="card border-0 shadow-sm p-4 mb-5 rounded-4">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-5">
+                        <label for="buscarVideo" class="form-label fw-bold fs-5 text-dark">
+                            <i class="bi bi-search text-primary me-1"></i> Buscar tema:
+                        </label>
+                        <input type="text" class="form-control form-control-lg border-2" id="buscarVideo" placeholder="Ej: Espalda, piernas, alimentación...">
+                    </div>
+                    <div class="col-md-7">
+                        <label class="form-label fw-bold fs-5 text-dark d-block">
+                            <i class="bi bi-funnel-fill text-primary me-1"></i> Filtrar por categoría:
+                        </label>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-primary btn-lg rounded-pill active fw-bold">Todos</button>
+                            <button class="btn btn-outline-primary btn-lg rounded-pill fw-bold"><i class="bi bi-activity"></i> Masajes y Terapia</button>
+                            <button class="btn btn-outline-primary btn-lg rounded-pill fw-bold"><i class="bi bi-apple"></i> Nutrición</button>
+                            <button class="btn btn-outline-primary btn-lg rounded-pill fw-bold"><i class="bi bi-heart"></i> Para el Cuidador</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería de Videos -->
+            <div class="row g-4">
+                <!-- Video 1 (ejemplos con imagenes de google) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden video-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" class="card-img-top video-thumb" alt="Masajes de movilidad">
+                            <div class="play-overlay d-flex align-items-center justify-content-center">
+                                <i class="bi bi-play-circle-fill display-3 text-warning"></i>
+                            </div>
+                            <span class="badge bg-dark position-absolute bottom-0 end-0 m-3 px-2 py-1 fs-6">8:45 min</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-2 rounded-pill fw-bold">Rehabilitación Física</span>
+                            <h3 class="card-title fw-bold h5 text-dark mb-2">Masaje y Movilización de Piernas para Adultos Mayores</h3>
+                            <p class="card-text text-muted small">Técnica sencilla para mejorar la circulación y reducir rigidez en articulaciones sin salir de casa.</p>
+                            <button class="btn btn-primary w-100 rounded-3 fw-bold mt-2 py-2 fs-5">
+                                <i class="bi bi-play-fill me-1"></i> Ver Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden video-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" class="card-img-top video-thumb" alt="Cuidados del cuidador">
+                            <div class="play-overlay d-flex align-items-center justify-content-center">
+                                <i class="bi bi-play-circle-fill display-3 text-warning"></i>
+                            </div>
+                            <span class="badge bg-dark position-absolute bottom-0 end-0 m-3 px-2 py-1 fs-6">5:20 min</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <span class="badge bg-warning-subtle text-dark mb-2 px-3 py-2 rounded-pill fw-bold">Para Cuidadores</span>
+                            <h3 class="card-title fw-bold h5 text-dark mb-2">Cómo Levantar a un Paciente de la Cama sin Mover la Espalda</h3>
+                            <p class="card-text text-muted small">Guía técnica y ergonómica para cuidadores primarios para evitar lesiones de columna.</p>
+                            <button class="btn btn-primary w-100 rounded-3 fw-bold mt-2 py-2 fs-5">
+                                <i class="bi bi-play-fill me-1"></i> Ver Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden video-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80" class="card-img-top video-thumb" alt="Nutrición básica">
+                            <div class="play-overlay d-flex align-items-center justify-content-center">
+                                <i class="bi bi-play-circle-fill display-3 text-warning"></i>
+                            </div>
+                            <span class="badge bg-dark position-absolute bottom-0 end-0 m-3 px-2 py-1 fs-6">10:15 min</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <span class="badge bg-success-subtle text-success mb-2 px-3 py-2 rounded-pill fw-bold">Nutrición</span>
+                            <h3 class="card-title fw-bold h5 text-dark mb-2">Preparación de Papillas Ricas en Nutrientes e Hidratación</h3>
+                            <p class="card-text text-muted small">Recetas fáciles de preparar con insumos económicos para pacientes con baja masa muscular.</p>
+                            <button class="btn btn-primary w-100 rounded-3 fw-bold mt-2 py-2 fs-5">
+                                <i class="bi bi-play-fill me-1"></i> Ver Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="fw-bold mb-1">INADEJ - Instituto Alteño para el Desarrollo de Jalisco</h5>
+                    <p class="small text-white-50 mb-0">Programa Contigo en Casa • Arandas, Jalisco</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="./index.html" class="text-white me-3 text-decoration-none">Inicio</a>
+                    <a href="./donations.html" class="text-white me-3 text-decoration-none">Donaciones</a>
+                    <a href="./appointment.html" class="text-white text-decoration-none">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
