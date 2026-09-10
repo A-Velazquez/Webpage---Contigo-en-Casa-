@@ -51,13 +51,11 @@ Prompt: "Recommend professional font pairings from Google Fonts for a healthcare
 
 What the AI Generated: Suggested pairing Poppins for headers and Roboto for body text, along with standard HTML <link> elements to load them. (*Note: I included the links to include the fonts but I have not implemented them in the css, this will be done later when the page's structure is more defined)
 
-AI Tool Used: Gemini
 
 Prompt: "What Bootstrap 5 components and utility classes can I use to build a clean video gallery layout with cards, badges, and responsive grid columns for mobile and desktop?"
 
 What the AI Generated: Provided HTML structure utilizing Bootstrap cards, col-md-6 col-lg-4, custom badge styles, and image overlay wrapper classes.
 
-AI Tool Used: Gemini
 
 Prompt: "Where can I source placeholder images or icons for a healthcare project, and how can I overlay a play button icon on top of a video thumbnail using Bootstrap and custom CSS?"
 
