@@ -82,7 +82,7 @@
  
 ### 🔨 Tasks Completed
 *Describe what you actually worked on during this session.*
-* [x] **Main page:** Added new bootstrap elements, changed colors, changed fonts, made the user interface more intuitive, making some important buttons easier to see.
+* [x] **Main page:** Added new bootstrap elements, changed colors, made the user interface more intuitive, making some important buttons easier to see.
 * [x] **Information:** Added some additional info to the main page. The info used was provided by an institution. There is still more to add.
 * [x] **Video library:** Created the video library page and linked it to the main page via links. Gave the page a basic structure similar to the one from the main page, with similar color palette and fonts.
  
