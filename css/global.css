@@ -1,10 +1,22 @@
-/* Tipografías e identidad visual de INADEJ */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
+/*
+    Global fonts and colors for INADEJ identity, and maintaining consistency through the files
+*/
+
+:root {
+    --primary-color: #1e3c5a;
+    --primary-dark: #162c43;
+    --accent-color: #ffc107;
+    --text-dark: #2b2b2b;
+    --bg-light: #f8f9fa;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
-    color: #2b2b2b;
-    background-color: #f8f9fa;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {
@@ -12,7 +24,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 
 .bg-primary-custom {
-    background-color: #1e3c5a !important; 
+    background-color: var(--primary-color) !important;
 }
 
 .icon-circle {

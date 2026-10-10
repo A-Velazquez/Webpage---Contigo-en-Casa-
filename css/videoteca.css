@@ -1,4 +1,3 @@
-/* Tarjetas de los videos */
 .video-card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
@@ -14,7 +13,6 @@
     object-fit: cover;
 }
 
-/* Capa oscura con botón Play sobre la imagen */
 .play-overlay {
     position: absolute;
     top: 0;
