@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donaciones - Contigo en Casa | INADEJ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/global.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary-custom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 d-flex align-items-center gap-2" href="./index.html">
+                <i class="bi bi-heart-pulse-fill text-warning"></i> Contigo en Casa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-2 fs-5">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="./index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="./videoteca.html">Videoteca de Cuidados</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-warning fw-bold px-4 rounded-pill shadow-sm active" href="./donations.html">
+                            <i class="bi bi-heart-fill me-1"></i> Donar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header de la sección de Donaciones -->
+    <header class="bg-primary-custom text-white py-5 text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill mb-2 fw-bold">100% Transparente y Confiable</span>
+            <h1 class="display-5 fw-bold mb-3">Tu ayuda llega directo a los hogares en Arandas</h1>
+            <p class="lead max-w-700 mx-auto fs-5 text-white-50">
+                Con más de 30 años de experiencia, en INADEJ acercamos salud, nutrición y movilidad a quienes más lo necesitan[cite: 1, 4].
+            </p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                
+                <!-- Columna de Información / Impacto -->
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4 text-dark">¿Cómo impacta tu donación?</h2>
+                    <p class="text-muted fs-5 mb-4">
+                        En Arandas, Jalisco, más de 3,200 personas viven con alguna discapacidad[cite: 2, 4]. Muchos abandonan sus tratamientos por falta de recursos económicos o movilidad[cite: 1, 2]. Tu aportación financia nuestro modelo de atención domiciliaria:
+                    </p>
+                    
+                    <div class="d-flex align-items-start gap-3 mb-3">
+                        <div class="icon-circle bg-primary-subtle text-primary flex-shrink-0">
+                            <i class="bi bi-apple fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Nutrición y Suplementos</h5>
+                            <p class="text-muted small mb-0">Valoraciones continuas y entrega de suplementación especializada para pacientes vulnerables.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3 mb-3">
+                        <div class="icon-circle bg-success-subtle text-success flex-shrink-0">
+                            <i class="bi bi-activity fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Rehabilitación Física Domiciliaria</h5>
+                            <p class="text-muted small mb-0">Terapias físicas a domicilio y capacitación práctica para el cuidador primario[cite: 1].</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="icon-circle bg-warning-subtle text-dark flex-shrink-0">
+                            <i class="bi bi-emoji-smile fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Apoyo Psicológico</h5>
+                            <p class="text-muted small mb-0">Acompañamiento emocional indispensable para reducir el estrés en los pacientes y sus familias[cite: 1].</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Botones / Formulario de Donación -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-lg p-4 p-md-5 rounded-4 bg-white">
+                        <h3 class="fw-bold text-center mb-3">Elige cómo aportar</h3>
+                        <p class="text-muted text-center mb-4">Selecciona el monto con el que deseas respaldar este programa social:</p>
+                        
+                        <div class="row g-3 mb-4">
+                            <div class="col-4">
+                                <button class="btn btn-outline-primary w-100 py-3 fw-bold fs-5 rounded-3">$250 MXN</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-outline-primary w-100 py-3 fw-bold fs-5 rounded-3 active">$500 MXN</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-outline-primary w-100 py-3 fw-bold fs-5 rounded-3">$1,000 MXN</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="montoLibre" class="form-label fw-bold text-dark">O ingresa otro monto:</label>
+                            <input type="number" class="form-control form-control-lg border-2" id="montoLibre" placeholder="Ej. 200">
+                        </div>
+
+                        <button class="btn btn-warning btn-lg w-100 fw-bold py-3 text-dark shadow-sm fs-4 rounded-pill">
+                            <i class="bi bi-heart-fill me-2"></i> Donar Ahora
+                        </button>
+                        
+                        <small class="text-muted text-center d-block mt-3">
+                            <i class="bi bi-shield-check text-success me-1"></i> Transacción segura y avalada por INADEJ
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="fw-bold mb-1">INADEJ - Instituto Alteño para el Desarrollo de Jalisco</h5>
+                    <p class="small text-white-50 mb-0">Programa Contigo en Casa • Arandas, Jalisco</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="./index.html" class="text-white me-3 text-decoration-none">Inicio</a>
+                    <a href="./videoteca.html" class="text-white me-3 text-decoration-none">Videoteca</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

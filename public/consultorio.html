@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Virtual y Avisos - Contigo en Casa | INADEJ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/consultorio.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary-custom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 d-flex align-items-center gap-2" href="./index.html">
+                <i class="bi bi-heart-pulse-fill text-inadej-yellow"></i> Contigo en Casa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-3 fs-5">
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold" href="./index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold" href="./videoteca.html">Videoteca de Cuidados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-inadej-yellow fw-bold" href="./consultorio.html">Consultorio Virtual</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-primary-custom text-white py-5 text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill mb-2 fw-bold">Atención Médica Remota</span>
+            <h1 class="display-5 fw-bold mb-3">Consultorio Virtual y Tablón de Avisos</h1>
+            <p class="lead max-w-700 mx-auto fs-5 text-white-50">
+                Resuelve dudas rápidas con nuestra asistencia médica virtual o consulta los avisos importantes compartidos por los especialistas de INADEJ en Arandas.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-5">
+                
+                <!-- Virtual consultory with an api -->
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4 bg-white h-100">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-circle bg-primary-subtle text-primary">
+                                <i class="bi bi-robot fs-2"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold h4 mb-1">Consultorio Virtual con IA Médica</h3>
+                                <p class="text-muted small mb-0">Escribe los síntomas o el problema de movilidad de tu familiar para recibir orientación básica.</p>
+                            </div>
+                        </div>
+
+                        <form id="consultaForm">
+                            <div class="mb-3">
+                                <label for="nombrePaciente" class="form-label fw-bold text-dark">Nombre del paciente o cuidador:</label>
+                                <input type="text" class="form-control form-control-lg border-2" id="nombrePaciente" placeholder="Ej. María López" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="categoriaConsulta" class="form-label fw-bold text-dark">Área de consulta:</label>
+                                <select class="form-select form-select-lg border-2" id="categoriaConsulta">
+                                    <option value="rehabilitacion">Rehabilitación Física y Movilidad</option>
+                                    <option value="nutricion">Nutrición y Alimentación</option>
+                                    <option value="psicologia">Salud Emocional / Cuidador</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="descripcionProblema" class="form-label fw-bold text-dark">Describe el problema o duda detalladamente:</label>
+                                <textarea class="form-control border-2" id="descripcionProblema" rows="4" placeholder="Ej. Mi abuelito tiene rigidez en las rodillas por las mañanas, ¿qué ejercicio suave podemos hacer en casa?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-inadej-blue btn-lg w-100 fw-bold py-3 shadow-sm rounded-pill fs-5">
+                                <i class="bi bi-send-fill me-2"></i> Enviar consulta a la IA Médica
+                            </button>
+                        </form>
+
+                        <!-- Answer container -->
+                        <div id="respuestaContainer" class="mt-4 p-4 rounded-4 bg-light border-start border-4 border-primary d-none">
+                            <h5 class="fw-bold text-primary mb-2"><i class="bi bi-lightbulb-fill me-2"></i> Orientación Médica Preliminar:</h5>
+                            <p id="textoRespuesta" class="text-muted mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notice board from doctors -->
+                <div class="col-lg-5">
+                    <h3 class="fw-bold text-dark mb-4"><i class="bi bi-board-fill text-inadej-yellow me-2"></i> Avisos de los Doctores</h3>
+                    
+                    <div class="vstack gap-3">
+                        
+                        <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary-subtle text-primary fw-bold px-3 py-1 rounded-pill">Rehabilitación</span>
+                                <small class="text-muted">10 Oct 2026</small>
+                            </div>
+                            <h5 class="fw-bold text-dark h6">Nuevos horarios para visitas domiciliarias en zona norte</h5>
+                            <p class="text-muted small mb-0">Recordamos a las familias de comunidades periféricas que las visitas de fisioterapia se reprogramaron para los días martes.</p>
+                            <small class="text-secondary mt-2 fw-semibold">— Dr. Alejandro Torres, INADEJ Arandas</small>
+                        </div>
+
+                        
+                        <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success-subtle text-success fw-bold px-3 py-1 rounded-pill">Nutrición</span>
+                                <small class="text-muted">05 Oct 2026</small>
+                            </div>
+                            <h5 class="fw-bold text-dark h6">Entrega de suplementos alimenticios</h5>
+                            <p class="text-muted small mb-0">La dotación mensual de suplementos nutricionales estará disponible en la sede del DIF municipal para cuidadores registrados.</p>
+                            <small class="text-secondary mt-2 fw-semibold">— Dra. Sofía Ramírez</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="fw-bold mb-1">INADEJ - Instituto Alteño para el Desarrollo de Jalisco</h5>
+                    <p class="small text-white-50 mb-0">Programa Contigo en Casa • Arandas, Jalisco</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="./index.html" class="text-white me-3 text-decoration-none">Inicio</a>
+                    <a href="./videoteca.html" class="text-white me-3 text-decoration-none">Videoteca</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/consultorio.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
