@@ -1,57 +1,74 @@
-// Data base mock of medical announcements
-const avisosMedicos = [
-    {
-        id: 1,
-        categoria: "Rehabilitación",
-        titulo: "Nuevos horarios para visitas domiciliarias en zona norte",
-        mensaje: "Recordamos a las familias que las visitas de fisioterapia se reprogramaron.",
-        doctor: "Dr. Alejandro Torres"
-    },
-    {
-        id: 2,
-        categoria: "Nutrición",
-        titulo: "Entrega de suplementos alimenticios",
-        mensaje: "La dotación mensual estará disponible en la sede del DIF municipal.",
-        doctor: "Dra. Sofía Ramírez"
-    }
-];
+require('dotenv').config();
 
-// Controller to process the virtual medical office
-exports.procesarConsultaIA = (req, res) => {
+exports.procesarConsultaIA = async (req, res) => {
     const { nombre, categoria, descripcion } = req.body;
 
+    // Inputs
     if (!nombre || !categoria || !descripcion) {
         return res.status(400).json({ 
             error: "Faltan datos obligatorios (nombre, categoría o descripción)." 
         });
     }
 
-    // this is temporary, the plan is to connect it to an ai api so the answers are personalized
-    let respuestaIA = "";
+    try {
+        // Instructions so gemini has a context
+        const systemInstruction = "Eres un asistente médico virtual empático del programa 'Contigo en Casa' de la organización INADEJ en Arandas, Jalisco. Atiendes a personas con problemas de movilidad y adultos mayores. Das orientaciones breves, prácticas y seguras de salud, recordando siempre que es una guía preliminar y no sustituye una consulta médica.";
 
-    switch (categoria) {
-        case 'rehabilitacion':
-            respuetaIA = `Hola ${nombre}. Analizando tu duda de rehabilitación: Para problemas de movilidad en casa, se recomienda realizar movilizaciones suaves y evitar forzar articulaciones rígidas. Un especialista de INADEJ evaluará el caso para dar seguimiento domiciliario.`;
-            break;
-        case 'nutricion':
-            respuetaIA = `Estimado(a) ${nombre}, referente a nutrición: Es fundamental mantener una adecuada hidratación y considerar los suplementos alimenticios especializados que contempla nuestro programa para evitar pérdida de masa muscular.`;
-            break;
-        case 'psicologia':
-            respuetaIA = `Hola ${nombre}. Comprendemos el desgaste emocional que implica el cuidado diario. Te recordamos que el apoyo psicológico para cuidadores primarios es clave para reducir el estrés y la ansiedad.`;
-            break;
-        default:
-            respuetaIA = `Hola ${nombre}. Hemos recibido tu consulta en INADEJ. Un especialista la revisará a la brevedad.`;
+        // Create the message from the user
+        const mensajeUsuario = `Hola, mi nombre es ${nombre}. Mi consulta es de la categoría de '${categoria}'. Mi duda o problema es: "${descripcion}".`;
+
+        // Gemini api endpoint
+        const apiKey = process.env.AI_API_KEY;
+        const geminiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
+
+        const apiResponse = await fetch(geminiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                system_instruction: {
+                    parts: [{ text: systemInstruction }]
+                },
+                contents: [{
+                    parts: [{ text: mensajeUsuario }]
+                }]
+            })
+        });
+
+        if (!apiResponse.ok) {
+            const errorData = await apiResponse.json();
+            console.error("Detalle del error de Gemini:", errorData);
+            throw new Error("Error en el servicio de Gemini API");
+        }
+
+        const data = await apiResponse.json();
+
+        // Extract the answer
+        const respuestaIA = data.candidates[0].content.parts[0].text;
+
+        return res.status(200).json({
+            exito: true,
+            mensaje: "Consulta procesada correctamente con Gemini IA",
+            respuestaIA: respuestaIA
+        });
+
+    } catch (error) {
+        console.error("Error al procesar la IA:", error);
+        return res.status(500).json({ 
+            error: "Ocurrió un error interno al procesar la consulta con la inteligencia artificial." 
+        });
     }
-
-    return res.status(200).json({
-        exito: true,
-        mensaje: "Consulta exitosa",
-        nombrePaciente: nombre,
-        area: categoria,
-        respuestaIA: respuetaIA
-    });
 };
 
 exports.obtenerAvisos = (req, res) => {
-    return res.status(200).json(avisosMedicos);
+    return res.status(200).json([
+        {
+            id: 1,
+            categoria: "Rehabilitación",
+            titulo: "Nuevos horarios para visitas domiciliarias",
+            mensaje: "Las visitas de fisioterapia se reprogramaron para los días martes.",
+            doctor: "Dr. Alejandro Torres"
+        }
+    ]);
 };
