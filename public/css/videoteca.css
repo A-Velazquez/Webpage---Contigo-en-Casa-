@@ -26,3 +26,25 @@
 .video-card:hover .play-overlay {
     background: rgba(0, 0, 0, 0.15);
 }
+
+/* Cuadro de la imagen mientras se cargan los videos */
+.video-thumb-placeholder {
+    height: 200px;
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 0;
+}
+
+/* Tarjetas del video: el botón "Ver Video" abre el reproductor */
+.boton-ver-video {
+    cursor: pointer;
+}
+
+/* Reproductor dentro de la ventana modal */
+#reproductorVideo {
+    background-color: #000;
+}
+
+#reproductorVideo:focus {
+    outline: none;
+}

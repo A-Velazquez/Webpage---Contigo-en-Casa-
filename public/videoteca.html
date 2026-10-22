@@ -47,7 +47,12 @@
             <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill mb-2 fw-bold">Acceso Gratuito y Libre</span>
             <h1 class="display-5 fw-bold mb-3">Videoteca de Ejercicios y Cuidados en Casa</h1>
             <p class="lead max-w-700 mx-auto fs-5 text-white-50">
-                Aprende técnicas sencillas de masajes, ejercicios de rehabilitación y consejos prácticos grabados por nuestros doctores y especialistas de INADEJ.
+                Aprende técnicas sencillas de masajes, ejercicios de rehabilitación y consejos prácticos que nuestros doctores y especialistas de INADEJ seleccionan para ti.
+            </p>
+            <p class="mb-0 mt-3">
+                <span class="badge bg-primary-custom border border-light text-white-50 px-3 py-2 rounded-pill">
+                    <i class="bi bi-cloud-arrow-down me-1"></i> Videos traídos de APIs públicas (Internet Archive, Pexels y Pixabay)
+                </span>
             </p>
         </div>
     </header>
@@ -55,98 +60,117 @@
     <!-- Sección de Videos y Filtros -->
     <main class="py-5 bg-light">
         <div class="container">
-            
-            <!-- Barra de Búsqueda y Filtros (todavia no sirven, es para darse una idea) -->
-            <div class="card border-0 shadow-sm p-4 mb-5 rounded-4">
+
+            <!-- Barra de Búsqueda y Filtros -->
+            <div class="card border-0 shadow-sm p-4 mb-4 rounded-4">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-5">
                         <label for="buscarVideo" class="form-label fw-bold fs-5 text-dark">
                             <i class="bi bi-search text-primary me-1"></i> Buscar tema:
                         </label>
-                        <input type="text" class="form-control form-control-lg border-2" id="buscarVideo" placeholder="Ej: Espalda, piernas, alimentación...">
+                        <div class="input-group input-group-lg">
+                            <input type="text" class="form-control border-2" id="buscarVideo" placeholder="Ej: espalda, piernas, alimentación..." autocomplete="off">
+                            <button class="btn btn-outline-secondary d-none" id="limpiarBusqueda" type="button" title="Borrar la búsqueda">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-7">
                         <label class="form-label fw-bold fs-5 text-dark d-block">
                             <i class="bi bi-funnel-fill text-primary me-1"></i> Filtrar por categoría:
                         </label>
-                        <div class="d-flex flex-wrap gap-2">
-                            <button class="btn btn-outline-primary btn-lg rounded-pill active fw-bold">Todos</button>
-                            <button class="btn btn-outline-primary btn-lg rounded-pill fw-bold"><i class="bi bi-activity"></i> Masajes y Terapia</button>
-                            <button class="btn btn-outline-primary btn-lg rounded-pill fw-bold"><i class="bi bi-apple"></i> Nutrición</button>
-                            <button class="btn btn-outline-primary btn-lg rounded-pill fw-bold"><i class="bi bi-heart"></i> Para el Cuidador</button>
+                        <div class="d-flex flex-wrap gap-2" id="filtrosCategorias">
+                            <button class="btn btn-outline-primary btn-lg rounded-pill active fw-bold" data-categoria="todos">Todos</button>
+                            <button class="btn btn-outline-primary btn-lg rounded-pill" data-categoria="terapia"><i class="bi bi-activity"></i> Masajes y Terapia</button>
+                            <button class="btn btn-outline-primary btn-lg rounded-pill" data-categoria="nutricion"><i class="bi bi-apple"></i> Nutrición</button>
+                            <button class="btn btn-outline-primary btn-lg rounded-pill" data-categoria="cuidador"><i class="bi bi-heart"></i> Para el Cuidador</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Aviso para cuando el servidor no está disponible -->
+                <div class="alert alert-warning d-none mt-3 mb-0 py-2 small" id="estadoAviso" role="alert"></div>
+            </div>
+
+            <!-- Resultado de la búsqueda -->
+            <p class="fw-bold text-dark mb-3" id="contadorVideos">Buscando videos...</p>
+
+            <!-- Estado de carga (esqueletos) -->
+            <div class="row g-4" id="estadoCarga">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="placeholder-glow">
+                            <div class="placeholder-wave placeholder-glow-2 video-thumb-placeholder"></div>
+                            <div class="card-body p-4">
+                                <span class="placeholder col-6 mb-2"></span>
+                                <h3 class="card-title fw-bold h5 placeholder-glow"><span class="placeholder col-11"></span></h3>
+                                <p class="placeholder-glow"><span class="placeholder col-12"></span><span class="placeholder col-8 mt-1"></span></p>
+                                <button class="btn btn-primary disabled w-100 rounded-3 fw-bold mt-2 py-2 fs-5">Cargando...</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="placeholder-glow">
+                            <div class="placeholder-wave placeholder-glow-2 video-thumb-placeholder"></div>
+                            <div class="card-body p-4">
+                                <span class="placeholder col-6 mb-2"></span>
+                                <h3 class="card-title fw-bold h5 placeholder-glow"><span class="placeholder col-11"></span></h3>
+                                <p class="placeholder-glow"><span class="placeholder col-12"></span><span class="placeholder col-8 mt-1"></span></p>
+                                <button class="btn btn-primary disabled w-100 rounded-3 fw-bold mt-2 py-2 fs-5">Cargando...</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="placeholder-glow">
+                            <div class="placeholder-wave placeholder-glow-2 video-thumb-placeholder"></div>
+                            <div class="card-body p-4">
+                                <span class="placeholder col-6 mb-2"></span>
+                                <h3 class="card-title fw-bold h5 placeholder-glow"><span class="placeholder col-11"></span></h3>
+                                <p class="placeholder-glow"><span class="placeholder col-12"></span><span class="placeholder col-8 mt-1"></span></p>
+                                <button class="btn btn-primary disabled w-100 rounded-3 fw-bold mt-2 py-2 fs-5">Cargando...</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Galería de Videos -->
-            <div class="row g-4">
-                <!-- Video 1 (ejemplos con imagenes de google) -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden video-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" class="card-img-top video-thumb" alt="Masajes de movilidad">
-                            <div class="play-overlay d-flex align-items-center justify-content-center">
-                                <i class="bi bi-play-circle-fill display-3 text-warning"></i>
-                            </div>
-                            <span class="badge bg-dark position-absolute bottom-0 end-0 m-3 px-2 py-1 fs-6">8:45 min</span>
-                        </div>
-                        <div class="card-body p-4">
-                            <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-2 rounded-pill fw-bold">Rehabilitación Física</span>
-                            <h3 class="card-title fw-bold h5 text-dark mb-2">Masaje y Movilización de Piernas para Adultos Mayores</h3>
-                            <p class="card-text text-muted small">Técnica sencilla para mejorar la circulación y reducir rigidez en articulaciones sin salir de casa.</p>
-                            <button class="btn btn-primary w-100 rounded-3 fw-bold mt-2 py-2 fs-5">
-                                <i class="bi bi-play-fill me-1"></i> Ver Video
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden video-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" class="card-img-top video-thumb" alt="Cuidados del cuidador">
-                            <div class="play-overlay d-flex align-items-center justify-content-center">
-                                <i class="bi bi-play-circle-fill display-3 text-warning"></i>
-                            </div>
-                            <span class="badge bg-dark position-absolute bottom-0 end-0 m-3 px-2 py-1 fs-6">5:20 min</span>
-                        </div>
-                        <div class="card-body p-4">
-                            <span class="badge bg-warning-subtle text-dark mb-2 px-3 py-2 rounded-pill fw-bold">Para Cuidadores</span>
-                            <h3 class="card-title fw-bold h5 text-dark mb-2">Cómo Levantar a un Paciente de la Cama sin Mover la Espalda</h3>
-                            <p class="card-text text-muted small">Guía técnica y ergonómica para cuidadores primarios para evitar lesiones de columna.</p>
-                            <button class="btn btn-primary w-100 rounded-3 fw-bold mt-2 py-2 fs-5">
-                                <i class="bi bi-play-fill me-1"></i> Ver Video
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden video-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80" class="card-img-top video-thumb" alt="Nutrición básica">
-                            <div class="play-overlay d-flex align-items-center justify-content-center">
-                                <i class="bi bi-play-circle-fill display-3 text-warning"></i>
-                            </div>
-                            <span class="badge bg-dark position-absolute bottom-0 end-0 m-3 px-2 py-1 fs-6">10:15 min</span>
-                        </div>
-                        <div class="card-body p-4">
-                            <span class="badge bg-success-subtle text-success mb-2 px-3 py-2 rounded-pill fw-bold">Nutrición</span>
-                            <h3 class="card-title fw-bold h5 text-dark mb-2">Preparación de Papillas Ricas en Nutrientes e Hidratación</h3>
-                            <p class="card-text text-muted small">Recetas fáciles de preparar con insumos económicos para pacientes con baja masa muscular.</p>
-                            <button class="btn btn-primary w-100 rounded-3 fw-bold mt-2 py-2 fs-5">
-                                <i class="bi bi-play-fill me-1"></i> Ver Video
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <!-- Mensaje cuando no hay resultados -->
+            <div class="d-none text-center py-5" id="sinResultados">
+                <i class="bi bi-search display-1 text-muted"></i>
+                <h3 class="fw-bold text-dark mt-3">No encontramos videos con esa búsqueda</h3>
+                <p class="text-muted mb-0">Prueba con otras palabras como “espalda”, “piernas”, “higiene” o “nutrición”.</p>
             </div>
+
+            <!-- Galería de Videos (se llena con JavaScript) -->
+            <div class="row g-4" id="galeriaVideos"></div>
 
         </div>
     </main>
+
+    <!-- Ventana modal con el reproductor -->
+    <div class="modal fade" id="modalVideo" tabindex="-1" aria-labelledby="tituloVideoModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content rounded-4">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="tituloVideoModal">Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9 bg-dark rounded-3 overflow-hidden">
+                        <video id="reproductorVideo" class="w-100 h-100" controls preload="metadata" playsinline></video>
+                    </div>
+                    <p class="text-muted mt-3 mb-2" id="descripcionVideoModal"></p>
+                    <ul class="list-unstyled mb-0" id="fichaVideoModal"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4">
@@ -165,5 +189,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/videoteca.js"></script>
 </body>
 </html>

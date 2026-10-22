@@ -104,5 +104,6 @@
 1. Get feedback from multiple people to see if the UI is intuitive enough.
 2. Add functionality to the website with javascript.
 3. Film videos to put in the video library.
+ 
 
 
