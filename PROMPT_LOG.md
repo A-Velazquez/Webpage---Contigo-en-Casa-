@@ -1,77 +1,165 @@
 # Team AI Prompt & Audit Log
- 
-**Project Name:** Contigo en Casa   
-**Team Members:** Santiago López Estrada, Adrián Isaac Velázquez Ramírez  
+
+**Project Name:** Contigo en Casa  
+**Team Members:** Santiago López Estrada, Adrián Isaac Velázquez Ramírez, Victor Jacquinot Fega
 **SDG Goal Target:** Good Health and Well-being and Reduced Inequalities
- 
+
 ---
- 
+
 ## Week [1] Log Entry
-*Duplicate this section for each week. If no AI was used this week, state: "No Generative AI was used in Week X."* 
+
+_Duplicate this section for each week. If no AI was used this week, state: "No Generative AI was used in Week X."_
 
 ### 1. High-Level Goal
-*What feature, component, or bug were you trying to solve this week?*
-* **Elements sharing the same space:** Making sure that two elements align alongside each other in the same width
- 
+
+_What feature, component, or bug were you trying to solve this week?_
+
+- **Elements sharing the same space:** Making sure that two elements align alongside each other in the same width
+
 ### 2. The Interaction Log
-*Document the primary prompts you used to generate the base code.*
+
+_Document the primary prompts you used to generate the base code._
 If two elements are surrounded by divs, one containing a background image and text, and the other one text with a button. How can I make it so the second element doesn’t go to the next line?
- 
-| AI Tool Used | Exact Initial Prompt | What the AI Generated (Summary/Snippet) |
-| :--- | :--- | :--- |
-| *e.g., ChatGPT-4o* | *"Necesito que estos elementos al principio de una pagina están los dos un lado del otro y que llenen el ancho de la página"* | Generated full CSS structure (´/* Contenedor principal para alinearlos en fila */.hero-section {display: flex;width: 100%;flex-wrap: wrap; /* Permite que en pantallas pequeñas se apilen si es necesario */}/* Título (ahora ocupa el 60% del ancho) */#paginaTitulo {background-image:url("../images/imagenTituloFondo.jpg");background-repeat: no-repeat;background-size: cover;background-position: center;width: 60%;min-height: 500px; padding: 30px;box-sizing: border-box;}/* Estilo del texto del título */#tituloPagina {display: flex;justify-content: center;font-size: 56px;font-family: "Comic Papyrus", "Comic Sans MS", Papyrus, sans-serif;font-weight: bold;color: #1e3c5a;margin-top: 200px;margin-bottom: 20px;}/* Contenedor de donación (ahora ocupa el 40% para sumar 100% en total) */#contenedorDonacion {box-sizing: border-box;width: 40%;padding: 30px; /* Opcional: da espacio interno similar al título */
-}´). |
- 
+
+| AI Tool Used       | Exact Initial Prompt                                                                                                          | What the AI Generated (Summary/Snippet)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _e.g., ChatGPT-4o_ | _"Necesito que estos elementos al principio de una pagina están los dos un lado del otro y que llenen el ancho de la página"_ | Generated full CSS structure (´/_ Contenedor principal para alinearlos en fila _/.hero-section {display: flex;width: 100%;flex-wrap: wrap; /_ Permite que en pantallas pequeñas se apilen si es necesario _/}/_ Título (ahora ocupa el 60% del ancho) _/#paginaTitulo {background-image:url("../images/imagenTituloFondo.jpg");background-repeat: no-repeat;background-size: cover;background-position: center;width: 60%;min-height: 500px; padding: 30px;box-sizing: border-box;}/_ Estilo del texto del título _/#tituloPagina {display: flex;justify-content: center;font-size: 56px;font-family: "Comic Papyrus", "Comic Sans MS", Papyrus, sans-serif;font-weight: bold;color: #1e3c5a;margin-top: 200px;margin-bottom: 20px;}/_ Contenedor de donación (ahora ocupa el 40% para sumar 100% en total) _/#contenedorDonacion {box-sizing: border-box;width: 40%;padding: 30px; /_ Opcional: da espacio interno similar al título _/ |
+| }´).               |
+
 ### 3. The Human Audit & Modifications
-*What did the AI get wrong or omit? What manual changes did you make to integrate this code into your existing application structure? (Write 2-3 sentences explaining your adjustments).*
-* **What we changed/added:** The entire code proposed wasn’t necessary and some elements that were given, mainly the percentages of the width, we were having problems with so we changed them.
- 
+
+_What did the AI get wrong or omit? What manual changes did you make to integrate this code into your existing application structure? (Write 2-3 sentences explaining your adjustments)._
+
+- **What we changed/added:** The entire code proposed wasn’t necessary and some elements that were given, mainly the percentages of the width, we were having problems with so we changed them.
+
 ### 4. Integration & Learnings
-*How does this code integrate with the rest of your system? What is the core mechanism you learned?*
-* **Core Mechanics:** This is the first thing that user would see when entering the webpage, so it is really important to make a good first impression
- 
+
+_How does this code integrate with the rest of your system? What is the core mechanism you learned?_
+
+- **Core Mechanics:** This is the first thing that user would see when entering the webpage, so it is really important to make a good first impression
+
 ### 5. Oral Defense Self-Check
-- [X] We can explain every single line of this code.
-- [X] We understand how the asynchronous operations/CSS classes used here affect other components.
-- [X] We know exactly which file and line numbers this code is located in our repository.
 
-
+- [x] We can explain every single line of this code.
+- [x] We understand how the asynchronous operations/CSS classes used here affect other components.
+- [x] We know exactly which file and line numbers this code is located in our repository.
 
 ### 1. High-Level Goal
-*What feature, component, or bug were you trying to solve this week?*
-* **Designing the core landing page (index.html) and the care video library (videoteca.html) for the "Contigo en Casa" project, integrating professional Google Fonts, Bootstrap components, responsive cards, icons, and contextual images.
- 
+
+_What feature, component, or bug were you trying to solve this week?_
+
+- \*\*Designing the core landing page (index.html) and the care video library (videoteca.html) for the "Contigo en Casa" project, integrating professional Google Fonts, Bootstrap components, responsive cards, icons, and contextual images.
+
 ### 2. The Interaction Log
-*Document the primary prompts you used to generate the base code.*
- 
+
+_Document the primary prompts you used to generate the base code._
 
 AI Tool Used: Gemini
 
 Prompt: "Recommend professional font pairings from Google Fonts for a healthcare and community social project landing page, and show me how to include them in HTML/CSS."
 
-What the AI Generated: Suggested pairing Poppins for headers and Roboto for body text, along with standard HTML <link> elements to load them. (*Note: I included the links to include the fonts but I have not implemented them in the css, this will be done later when the page's structure is more defined)
-
+What the AI Generated: Suggested pairing Poppins for headers and Roboto for body text, along with standard HTML <link> elements to load them. (\*Note: I included the links to include the fonts but I have not implemented them in the css, this will be done later when the page's structure is more defined)
 
 Prompt: "What Bootstrap 5 components and utility classes can I use to build a clean video gallery layout with cards, badges, and responsive grid columns for mobile and desktop?"
 
 What the AI Generated: Provided HTML structure utilizing Bootstrap cards, col-md-6 col-lg-4, custom badge styles, and image overlay wrapper classes.
 
+Prompt: "Where can I source placeholder images or icons for a healthcare project, and how can I overlay a play button icon on top of a video thumbnail using Bootstrap and custom CSS?"
+
+What the AI Generated: Suggested Unsplash stock image URLs for care contexts, Bootstrap Icons (bi-play-circle-fill), and a CSS absolute overlay layout using .play-overlay.
+
+### 3. The Human Audit & Modifications
+
+_What did the AI get wrong or omit? What manual changes did you make to integrate this code into your existing application structure? (Write 2-3 sentences explaining your adjustments)._
+
+- **What we changed/added:** The AI-generated code included generic template text and placeholder links. I manually replaced all this to reflect the exact mission and context of INADEJ and the "Contigo en Casa" program. I also mapped out the actual relative navigation paths (./index.html, ./videoteca.html, ./appointment.html, ./donations.html)and implemented the css.
+
+### 4. Integration & Learnings
+
+_How does this code integrate with the rest of your system? What is the core mechanism you learned?_
+
+- **Core Mechanics:** Core Mechanics: The user interface relies on Bootstrap's grid system and flexbox utilities to adapt across mobile and desktop screens. I practiced how to combine Bootstrap's responsive breakpoints with custom CSS positioning (position-relative and absolute overlays) to create interactive visual effects, like the hover dimming and play button overlay on video cards without breaking responsiveness.
+
+### 5. Oral Defense Self-Check
+
+- [ x ] We can explain every single line of this code.
+- [ x ] We understand how the asynchronous operations/CSS classes used here affect other components.
+- [ x ] We know exactly which file and line numbers this code is located in our repository.
+
+## Week [2] Log Entry
+
+### 1. High-Level Goal
+
+_What feature, component, or bug were you trying to solve this week?_
+
+- **Getting videos for "videoteca" that are of fair use**
+- **That the filtering in "videoteca" works as expected**
+- **That "videoteca" works also in github pages**
+
+### 2. The Interaction Log
+
+_Document the primary prompts you used to generate the base code._
+
+| AI Tool Used   | Exact Initial Prompt                                                                                             | What the AI Generated (Summary/Snippet)                                                                                        |
+| :------------- | :--------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| _e.g., Claude_ | _"How could I implement videos regarding health-care from a website or api, making sure they are from fair use"_ | You can get the videos primarly for internet archive. Ill help you gather the videos and then you can use them in your webpage |
+
+### 3. The Human Audit & Modifications
+
+_What did the AI get wrong or omit? What manual changes did you make to integrate this code into your existing application structure? (Write 2-3 sentences explaining your adjustments)._
+
+- **What we changed/added:** The entire code proposed wasn’t necessary and some elements that were given, mainly the percentages of the width, we were having problems with so we changed them.
+
+### 4. Integration & Learnings
+
+_How does this code integrate with the rest of your system? What is the core mechanism you learned?_
+
+- **Core Mechanics:** This is the first thing that user would see when entering the webpage, so it is really important to make a good first impression
+
+### 5. Oral Defense Self-Check
+
+- [x] We can explain every single line of this code.
+- [x] We understand how the asynchronous operations/CSS classes used here affect other components.
+- [x] We know exactly which file and line numbers this code is located in our repository.
+
+### 1. High-Level Goal
+
+_What feature, component, or bug were you trying to solve this week?_
+
+- \*\*Designing the core landing page (index.html) and the care video library (videoteca.html) for the "Contigo en Casa" project, integrating professional Google Fonts, Bootstrap components, responsive cards, icons, and contextual images.
+
+### 2. The Interaction Log
+
+_Document the primary prompts you used to generate the base code._
+
+AI Tool Used: Gemini
+
+Prompt: "Recommend professional font pairings from Google Fonts for a healthcare and community social project landing page, and show me how to include them in HTML/CSS."
+
+What the AI Generated: Suggested pairing Poppins for headers and Roboto for body text, along with standard HTML <link> elements to load them. (\*Note: I included the links to include the fonts but I have not implemented them in the css, this will be done later when the page's structure is more defined)
+
+Prompt: "What Bootstrap 5 components and utility classes can I use to build a clean video gallery layout with cards, badges, and responsive grid columns for mobile and desktop?"
+
+What the AI Generated: Provided HTML structure utilizing Bootstrap cards, col-md-6 col-lg-4, custom badge styles, and image overlay wrapper classes.
 
 Prompt: "Where can I source placeholder images or icons for a healthcare project, and how can I overlay a play button icon on top of a video thumbnail using Bootstrap and custom CSS?"
 
 What the AI Generated: Suggested Unsplash stock image URLs for care contexts, Bootstrap Icons (bi-play-circle-fill), and a CSS absolute overlay layout using .play-overlay.
 
-
- 
 ### 3. The Human Audit & Modifications
-*What did the AI get wrong or omit? What manual changes did you make to integrate this code into your existing application structure? (Write 2-3 sentences explaining your adjustments).*
-* **What we changed/added:** The AI-generated code included generic template text and placeholder links. I manually replaced all this to reflect the exact mission and context of INADEJ and the "Contigo en Casa" program. I also mapped out the actual relative navigation paths (./index.html, ./videoteca.html, ./appointment.html, ./donations.html)and implemented the css.
- 
+
+_What did the AI get wrong or omit? What manual changes did you make to integrate this code into your existing application structure? (Write 2-3 sentences explaining your adjustments)._
+
+- **What we changed/added:** The AI-generated code included generic template text and placeholder links. I manually replaced all this to reflect the exact mission and context of INADEJ and the "Contigo en Casa" program. I also mapped out the actual relative navigation paths (./index.html, ./videoteca.html, ./appointment.html, ./donations.html)and implemented the css.
+
 ### 4. Integration & Learnings
-*How does this code integrate with the rest of your system? What is the core mechanism you learned?*
-* **Core Mechanics:** Core Mechanics: The user interface relies on Bootstrap's grid system and flexbox utilities to adapt across mobile and desktop screens. I practiced how to combine Bootstrap's responsive breakpoints with custom CSS positioning (position-relative and absolute overlays) to create interactive visual effects, like the hover dimming and play button overlay on video cards without breaking responsiveness. 
- 
+
+_How does this code integrate with the rest of your system? What is the core mechanism you learned?_
+
+- **Core Mechanics:** Core Mechanics: The user interface relies on Bootstrap's grid system and flexbox utilities to adapt across mobile and desktop screens. I practiced how to combine Bootstrap's responsive breakpoints with custom CSS positioning (position-relative and absolute overlays) to create interactive visual effects, like the hover dimming and play button overlay on video cards without breaking responsiveness.
+
 ### 5. Oral Defense Self-Check
-- [ x] We can explain every single line of this code.
-- [ x] We understand how the asynchronous operations/CSS classes used here affect other components.
-- [ xaaaa] We know exactly which file and line numbers this code is located in our repository.
+
+- [ x ] We can explain every single line of this code.
+- [ x ] We understand how the asynchronous operations/CSS classes used here affect other components.
+- [ x ] We know exactly which file and line numbers this code is located in our repository.
