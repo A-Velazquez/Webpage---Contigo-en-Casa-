@@ -1,6 +1,6 @@
 {
   "generado": "2026-10-20T15:58:31.869Z",
-  "total": 43,
+  "total": 40,
   "categorias": {
     "terapia": {
       "nombre": "Masajes y Terapia",
@@ -80,28 +80,6 @@
       "autor": "Arundel TV",
       "licencia": "Consulta la licencia en Internet Archive",
       "anio": "2021"
-    },
-    {
-      "id": "ia:543-hd",
-      "titulo": "Yoga y Movilidad para Articulaciones Rígidas",
-      "descripcion": "Clase de 30 minutos de yoga suave para ganar movilidad en coyunturas rígidas: puente, rodilla al pecho, gato, guerrero y montaña.",
-      "categoria": "terapia",
-      "etiquetas": [
-        "yoga",
-        "movilidad",
-        "rigidez",
-        "articulaciones"
-      ],
-      "duracionSegundos": 1970,
-      "duracion": "32:50",
-      "miniatura": "https://archive.org/services/img/543-hd",
-      "videoUrl": "https://archive.org/download/543-hd/543-HD.mp4",
-      "embedUrl": "https://archive.org/embed/543-hd",
-      "pagina": "https://archive.org/details/543-hd",
-      "fuente": "Internet Archive",
-      "autor": "Dr. Melissa West",
-      "licencia": "https://creativecommons.org/licenses/by-nd/4.0/",
-      "anio": null
     },
     {
       "id": "ia:KneeArthritisExercise",
@@ -188,51 +166,6 @@
       "autor": "MCTV",
       "licencia": "Consulta la licencia en Internet Archive",
       "anio": "2019"
-    },
-    {
-      "id": "ia:basic-clinical-massage-therapy::CLINICAL MASSAGE Ch10.Leg,Ankle,Foot.ia.mp4",
-      "titulo": "Masaje y Movilización de Piernas para Adultos Mayores",
-      "descripcion": "Clase de masaje clínico dedicada a piernas, tobillo y pie: técnicas para mejorar la circulación y reducir la rigidez sin salir de casa.",
-      "categoria": "terapia",
-      "etiquetas": [
-        "masaje",
-        "piernas",
-        "movilización",
-        "circulación",
-        "adultos mayores"
-      ],
-      "duracionSegundos": 1203,
-      "duracion": "20:03",
-      "miniatura": "https://archive.org/services/img/basic-clinical-massage-therapy",
-      "videoUrl": "https://archive.org/download/basic-clinical-massage-therapy/CLINICAL%20MASSAGE%20Ch10.Leg%2CAnkle%2CFoot.ia.mp4",
-      "embedUrl": "https://archive.org/embed/basic-clinical-massage-therapy",
-      "pagina": "https://archive.org/details/basic-clinical-massage-therapy",
-      "fuente": "Internet Archive",
-      "autor": "Internet Archive",
-      "licencia": "Consulta la licencia en Internet Archive",
-      "anio": null
-    },
-    {
-      "id": "ia:basic-clinical-massage-therapy::CLINICAL MASSAGE Ch07.Lower Back,Abdomen.ia.mp4",
-      "titulo": "Masaje Clínico: Espalda Baja y Abdomen",
-      "descripcion": "Clase de masaje clínico donde se explican la anatomía y las técnicas de trabajo en la zona lumbar y abdominal.",
-      "categoria": "terapia",
-      "etiquetas": [
-        "masaje",
-        "masaje clínico",
-        "espalda",
-        "abdomen"
-      ],
-      "duracionSegundos": 524,
-      "duracion": "8:44",
-      "miniatura": "https://archive.org/services/img/basic-clinical-massage-therapy",
-      "videoUrl": "https://archive.org/download/basic-clinical-massage-therapy/CLINICAL%20MASSAGE%20Ch07.Lower%20Back%2CAbdomen.ia.mp4",
-      "embedUrl": "https://archive.org/embed/basic-clinical-massage-therapy",
-      "pagina": "https://archive.org/details/basic-clinical-massage-therapy",
-      "fuente": "Internet Archive",
-      "autor": "Internet Archive",
-      "licencia": "Consulta la licencia en Internet Archive",
-      "anio": null
     },
     {
       "id": "ia:Massage_Therapy_10-11-17",

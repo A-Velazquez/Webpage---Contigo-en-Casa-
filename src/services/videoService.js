@@ -667,7 +667,7 @@ async function cargarCatalogoCurado() {
             })
         );
 
-        catalogo.push(...resultados.filter(Boolean));
+        catalogo.push(...resultados.filter((video) => video && video.videoUrl));
     }
 
     return catalogo;
@@ -685,7 +685,12 @@ function leerCatalogoLocal() {
         const contenido = fs.readFileSync(ruta, 'utf8');
         const datos = JSON.parse(contenido);
 
-        return Array.isArray(datos.videos) ? datos.videos : null;
+        if (!Array.isArray(datos.videos)) {
+            return null;
+        }
+
+        // Ignoramos los videos que ya no tienen archivo reproducible
+        return datos.videos.filter((video) => video && video.videoUrl);
     } catch (error) {
         console.error('No se pudo leer el catálogo local:', error.message);
         return null;

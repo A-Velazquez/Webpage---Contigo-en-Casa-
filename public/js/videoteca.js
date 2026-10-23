@@ -1,9 +1,11 @@
 /**
  * Lógica de la videoteca.
  *
- * - Pide los videos al servidor (que los trae de las APIs públicas).
- * - Filtra por texto y por categoría.
- * - Si el servidor no está encendido, usa el catálogo guardado en data/videos.json.
+ * - En desarrollo (localhost) pide los videos al servidor, que los trae de las
+ *   APIs públicas y permite buscar en vivo.
+ * - En un hosting estático (GitHub Pages) usa directamente el catálogo guardado
+ *   en data/videos.json, porque ahí no existe el endpoint /api/videos.
+ * - Filtra por texto y por categoría en ambos casos.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,10 +39,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // Peticiones al servidor
     // ---------------------------------------------------------------
 
-    // Intenta la API del servidor donde está la página y, si no hay,
-    // intenta el servidor local de INADEJ (puerto 3000).
+    // ¿La página se está abriendo desde un servidor local de desarrollo?
+    // Si no, es un hosting estático (GitHub Pages) y no hay API que consultar.
+    function estaEnLocal() {
+        const { protocol, hostname } = window.location;
+
+        return (
+            protocol === 'file:' ||
+            hostname === 'localhost' ||
+            hostname === '127.0.0.1' ||
+            hostname === '[::1]'
+        );
+    }
+
+    // Direcciones donde puede vivir la API. En GitHub Pages no hay ninguna,
+    // así que ni siquiera lo intentamos (así no ensuciamos la consola).
+    function basesApi() {
+        const bases = [''];
+
+        // Si la página se sirve desde otro puerto local (por ejemplo Live Server)
+        // probamos también el puerto del servidor de Node.
+        if (estaEnLocal() && window.location.port !== '3000') {
+            bases.push('http://localhost:3000');
+        }
+
+        return bases;
+    }
+
+    // Pide los videos a la API del servidor (solo tiene sentido en local)
     async function pedirVideos(parametros) {
-        const bases = ['', 'http://localhost:3000'];
+        const bases = basesApi();
         let ultimoError = null;
 
         for (const base of bases) {
@@ -244,38 +272,49 @@ document.addEventListener('DOMContentLoaded', () => {
             parametros.set('categoria', estado.categoria);
         }
 
-        try {
-            const datos = await pedirVideos(parametros);
-
-            // Si el usuario ya escribió otra cosa, no pintamos esta respuesta
-            if (numeroPeticion !== contadorPeticiones) {
-                return;
-            }
-
-            ocultarAviso();
-            mostrarVideos(datos.videos);
-        } catch (error) {
-            // Sin servidor: usamos el catálogo guardado en el sitio
+        // 1) En local, la API trae resultados en vivo (incluida la búsqueda
+        //    contra las APIs públicas). Si falla, seguimos con el catálogo.
+        if (estaEnLocal()) {
             try {
-                const catalogo = await pedirCatalogoLocal();
+                const datos = await pedirVideos(parametros);
 
+                // Si el usuario ya escribió otra cosa, no pintamos esta respuesta
                 if (numeroPeticion !== contadorPeticiones) {
                     return;
                 }
 
-                const videos = filtrarVideos(catalogo, estado.consulta, estado.categoria);
+                ocultarAviso();
+                mostrarVideos(datos.videos);
+                return;
+            } catch (error) {
+                // El servidor no está encendido: usamos el catálogo guardado
+            }
+        }
 
-                mostrarVideos(videos);
+        // 2) Sin servidor (GitHub Pages, o npm apagado): catálogo guardado.
+        try {
+            const catalogo = await pedirCatalogoLocal();
+
+            if (numeroPeticion !== contadorPeticiones) {
+                return;
+            }
+
+            mostrarVideos(filtrarVideos(catalogo, estado.consulta, estado.categoria));
+
+            if (estaEnLocal()) {
                 mostrarAviso(
                     'El servidor de INADEJ no está encendido, por eso mostramos el catálogo guardado en la página. El filtrado sigue funcionando.'
                 );
-            } catch (errorLocal) {
-                galeria.classList.add('d-none');
-                estadoCarga.classList.add('d-none');
-                sinResultados.classList.remove('d-none');
-                contadorVideos.textContent = 'Sin resultados';
-                mostrarAviso('No se pudieron cargar los videos. Revisa tu conexión a internet.');
+            } else {
+                // En GitHub Pages es lo normal, no hace falta asustar al usuario
+                ocultarAviso();
             }
+        } catch (errorLocal) {
+            galeria.classList.add('d-none');
+            estadoCarga.classList.add('d-none');
+            sinResultados.classList.remove('d-none');
+            contadorVideos.textContent = 'Sin resultados';
+            mostrarAviso('No se pudieron cargar los videos. Revisa tu conexión a internet.');
         }
     }
 
@@ -311,10 +350,14 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.show();
 
         // Intentamos que el video empiece a reproducirse solo
-        const reproducción = reproductor.play();
+        if (!video.videoUrl) {
+            return;
+        }
 
-        if (reproduccion && typeof reproduction.catch === 'function') {
-            reproducción.catch(() => {
+        const reproduccion = reproductor.play();
+
+        if (reproduccion && typeof reproduccion.catch === 'function') {
+            reproduccion.catch(() => {
                 // Si el navegador no lo permite, el usuario lo reproduce con el botón
             });
         }
