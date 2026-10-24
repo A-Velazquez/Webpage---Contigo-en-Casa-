@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultorio Virtual y Avisos - Contigo en Casa | INADEJ</title>
+    <title>Consultorio Virtual - Contigo en Casa | INADEJ</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -40,10 +40,10 @@
     <!-- Header -->
     <header class="bg-primary-custom text-white py-5 text-center">
         <div class="container">
-            <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill mb-2 fw-bold">Atención Médica Remota</span>
-            <h1 class="display-5 fw-bold mb-3">Consultorio Virtual y Tablón de Avisos</h1>
+            <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill mb-2 fw-bold">Atención Remota</span>
+            <h1 class="display-5 fw-bold mb-3">Consultorio Virtual de IA</h1>
             <p class="lead max-w-700 mx-auto fs-5 text-white-50">
-                Resuelve dudas rápidas con nuestra asistencia médica virtual o consulta los avisos importantes compartidos por los especialistas de INADEJ en Arandas.
+                Resuelve dudas rápidas de movilidad, nutrición y salud emocional con nuestra asistencia virtual especializada del programa INADEJ.
             </p>
         </div>
     </header>
@@ -51,18 +51,18 @@
     <!-- Main content -->
     <main class="py-5 bg-light">
         <div class="container">
-            <div class="row g-5">
+            <div class="row justify-content-center">
                 
-                <!-- Virtual consultory with an api -->
-                <div class="col-lg-7">
-                    <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4 bg-white h-100">
+                <!-- Virtual consultory with Gemini AI -->
+                <div class="col-lg-9 col-xl-8">
+                    <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4 bg-white">
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="icon-circle bg-primary-subtle text-primary">
-                                <i class="bi bi-robot fs-2"></i>
+                            <div class="icon-circle bg-primary-subtle text-primary p-3 rounded-circle">
+                                <i class="bi bi-robot fs-1"></i>
                             </div>
                             <div>
-                                <h3 class="fw-bold h4 mb-1">Consultorio Virtual con IA Médica</h3>
-                                <p class="text-muted small mb-0">Escribe los síntomas o el problema de movilidad de tu familiar para recibir orientación básica.</p>
+                                <h3 class="fw-bold h4 mb-1">Consultorio Virtual con IA</h3>
+                                <p class="text-muted small mb-0">Escribe los síntomas o el problema de movilidad de tu familiar para recibir orientación básica preliminar.</p>
                             </div>
                         </div>
 
@@ -83,44 +83,15 @@
                                 <label for="descripcionProblema" class="form-label fw-bold text-dark">Describe el problema o duda detalladamente:</label>
                                 <textarea class="form-control border-2" id="descripcionProblema" rows="4" placeholder="Ej. Mi abuelito tiene rigidez en las rodillas por las mañanas, ¿qué ejercicio suave podemos hacer en casa?" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-inadej-blue btn-lg w-100 fw-bold py-3 shadow-sm rounded-pill fs-5">
-                                <i class="bi bi-send-fill me-2"></i> Enviar consulta a la IA Médica
+                            <button type="submit" id="btnEnviar" class="btn btn-inadej-blue btn-lg w-100 fw-bold py-3 shadow-sm rounded-pill fs-5">
+                                <i class="bi bi-send-fill me-2"></i> Enviar consulta a la IA 
                             </button>
                         </form>
 
                         <!-- Answer container -->
                         <div id="respuestaContainer" class="mt-4 p-4 rounded-4 bg-light border-start border-4 border-primary d-none">
-                            <h5 class="fw-bold text-primary mb-2"><i class="bi bi-lightbulb-fill me-2"></i> Orientación Médica Preliminar:</h5>
-                            <p id="textoRespuesta" class="text-muted mb-0"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Notice board from doctors -->
-                <div class="col-lg-5">
-                    <h3 class="fw-bold text-dark mb-4"><i class="bi bi-board-fill text-inadej-yellow me-2"></i> Avisos de los Doctores</h3>
-                    
-                    <div class="vstack gap-3">
-                        
-                        <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-primary-subtle text-primary fw-bold px-3 py-1 rounded-pill">Rehabilitación</span>
-                                <small class="text-muted">10 Oct 2026</small>
-                            </div>
-                            <h5 class="fw-bold text-dark h6">Nuevos horarios para visitas domiciliarias en zona norte</h5>
-                            <p class="text-muted small mb-0">Recordamos a las familias de comunidades periféricas que las visitas de fisioterapia se reprogramaron para los días martes.</p>
-                            <small class="text-secondary mt-2 fw-semibold">— Dr. Alejandro Torres, INADEJ Arandas</small>
-                        </div>
-
-                        
-                        <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-success-subtle text-success fw-bold px-3 py-1 rounded-pill">Nutrición</span>
-                                <small class="text-muted">05 Oct 2026</small>
-                            </div>
-                            <h5 class="fw-bold text-dark h6">Entrega de suplementos alimenticios</h5>
-                            <p class="text-muted small mb-0">La dotación mensual de suplementos nutricionales estará disponible en la sede del DIF municipal para cuidadores registrados.</p>
-                            <small class="text-secondary mt-2 fw-semibold">— Dra. Sofía Ramírez</small>
+                            <h5 class="fw-bold text-primary mb-2"><i class="bi bi-lightbulb-fill me-2"></i> Orientación Preliminar:</h5>
+                            <p id="textoRespuesta" class="text-muted mb-0" style="white-space: pre-line;"></p>
                         </div>
                     </div>
                 </div>
@@ -139,7 +110,6 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="./index.html" class="text-white me-3 text-decoration-none">Inicio</a>
-                    <a href="./videoteca.html" class="text-white me-3 text-decoration-none">Videoteca</a>
                 </div>
             </div>
         </div>

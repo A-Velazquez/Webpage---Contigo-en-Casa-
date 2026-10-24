@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const consultaForm = document.getElementById('consultaForm');
     const respuestaContainer = document.getElementById('respuestaContainer');
     const textoRespuesta = document.getElementById('textoRespuesta');
+    const btnEnviar = document.getElementById('btnEnviar');
 
     consultaForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -10,11 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoria = document.getElementById('categoriaConsulta').value;
         const descripcion = document.getElementById('descripcionProblema').value;
 
+        // Loader
+        btnEnviar.disabled = true;
+        btnEnviar.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Procesando con IA...`;
         textoRespuesta.textContent = "Conectando con la IA médica de INADEJ...";
         respuestaContainer.classList.remove('d-none');
 
         try {
-            const response = await fetch('http://localhost:3000/api/consultas', {
+            // Relative route (for render)
+            const response = await fetch('/api/consultas', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json' 
@@ -27,12 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const data = await response.json();
-            
             textoRespuesta.textContent = data.respuestaIA;
 
         } catch (error) {
             console.error("Error al conectar con la API:", error);
-            textoRespuesta.textContent = "No se pudo conectar con el servidor local. Asegúrate de que tu servidor de Node.js esté encendido.";
+            textoRespuesta.textContent = "Ocurrió un problema al procesar la consulta. Por favor, asegúrate de que el servidor esté activo e intenta de nuevo.";
+        } finally {
+            btnEnviar.disabled = false;
+            btnEnviar.innerHTML = `<i class="bi bi-send-fill me-2"></i> Enviar consulta a la IA Médica`;
         }
     });
 });
