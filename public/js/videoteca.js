@@ -1,10 +1,10 @@
 /**
  * Lógica de la videoteca.
  *
- * - En desarrollo (localhost) pide los videos al servidor, que los trae de las
- *   APIs públicas y permite buscar en vivo.
- * - En un hosting estático (GitHub Pages) usa directamente el catálogo guardado
- *   en data/videos.json, porque ahí no existe el endpoint /api/videos.
+ * - Si hay servidor (localhost o Render) pide los videos a la API, que los
+ *   trae de las APIs públicas y permite buscar en vivo.
+ * - En un hosting estático (GitHub Pages) usa el catálogo guardado en
+ *   data/videos.json, porque ahí no existe el endpoint /api/videos.
  * - Filtra por texto y por categoría en ambos casos.
  */
 
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contadorVideos = document.getElementById('contadorVideos');
     const modalVideo = document.getElementById('modalVideo');
     const reproductor = document.getElementById('reproductorVideo');
+    const errorVideo = document.getElementById('errorVideo');
     const tituloModal = document.getElementById('tituloVideoModal');
     const descripcionModal = document.getElementById('descripcionVideoModal');
     const fichaModal = document.getElementById('fichaVideoModal');
@@ -40,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------------
 
     // ¿La página se está abriendo desde un servidor local de desarrollo?
-    // Si no, es un hosting estático (GitHub Pages) y no hay API que consultar.
     function estaEnLocal() {
         const { protocol, hostname } = window.location;
 
@@ -52,13 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    // Direcciones donde puede vivir la API. En GitHub Pages no hay ninguna,
-    // así que ni siquiera lo intentamos (así no ensuciamos la consola).
+    // Direcciones donde puede vivir la API:
+    // - el mismo origen (Express en local o desplegado en Render),
+    // - y, solo en desarrollo, el puerto 3000 por si se abre con Live Server.
     function basesApi() {
         const bases = [''];
 
-        // Si la página se sirve desde otro puerto local (por ejemplo Live Server)
-        // probamos también el puerto del servidor de Node.
         if (estaEnLocal() && window.location.port !== '3000') {
             bases.push('http://localhost:3000');
         }
@@ -66,8 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return bases;
     }
 
-    // Pide los videos a la API del servidor (solo tiene sentido en local)
+    // null = todavía no sabemos si este hosting tiene API.
+    // En GitHub Pages no existe, así que lo averiguamos una sola vez y
+    // después vamos directo al catálogo guardado.
+    let apiDisponible = null;
+
+    // Pide los videos a la API del servidor (Express local o Render)
     async function pedirVideos(parametros) {
+        if (apiDisponible === false) {
+            throw new Error('Este hosting no tiene API de videos');
+        }
+
         const bases = basesApi();
         let ultimoError = null;
 
@@ -87,12 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('La respuesta del servidor no tiene videos');
                 }
 
+                apiDisponible = true;
                 return datos;
             } catch (error) {
                 ultimoError = error;
             }
         }
 
+        // Ninguna dirección respondió: en esta visita usamos el catálogo
+        apiDisponible = false;
         throw ultimoError || new Error('No hay conexión con el servidor');
     }
 
@@ -272,23 +283,22 @@ document.addEventListener('DOMContentLoaded', () => {
             parametros.set('categoria', estado.categoria);
         }
 
-        // 1) En local, la API trae resultados en vivo (incluida la búsqueda
-        //    contra las APIs públicas). Si falla, seguimos con el catálogo.
-        if (estaEnLocal()) {
-            try {
-                const datos = await pedirVideos(parametros);
+        // 1) Si hay API (Express en local o desplegado en Render) usamos sus
+        //    resultados en vivo, incluida la búsqueda contra las APIs públicas.
+        //    En GitHub Pages el primer intento da 404 y seguimos con el catálogo.
+        try {
+            const datos = await pedirVideos(parametros);
 
-                // Si el usuario ya escribió otra cosa, no pintamos esta respuesta
-                if (numeroPeticion !== contadorPeticiones) {
-                    return;
-                }
-
-                ocultarAviso();
-                mostrarVideos(datos.videos);
+            // Si el usuario ya escribió otra cosa, no pintamos esta respuesta
+            if (numeroPeticion !== contadorPeticiones) {
                 return;
-            } catch (error) {
-                // El servidor no está encendido: usamos el catálogo guardado
             }
+
+            ocultarAviso();
+            mostrarVideos(datos.videos);
+            return;
+        } catch (error) {
+            // Sin servidor: usamos el catálogo guardado
         }
 
         // 2) Sin servidor (GitHub Pages, o npm apagado): catálogo guardado.
@@ -321,7 +331,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------------
     // Reproductor (ventana modal)
     // ---------------------------------------------------------------
+
+    // Video que está abierto en la ventana (para el aviso de error)
+    let videoActual = null;
+
+    // Aviso dentro de la ventana cuando el archivo no se puede cargar
+    function mostrarErrorVideo() {
+        const enlace =
+            videoActual && videoActual.pagina
+                ? ` <a href="${escapar(videoActual.pagina)}" target="_blank" rel="noopener" class="alert-link">Ábrelo en su página original</a>.`
+                : '';
+
+        errorVideo.innerHTML =
+            'No pudimos cargar este video desde su fuente.' + enlace;
+        errorVideo.classList.remove('d-none');
+        reproductor.classList.add('d-none');
+    }
+
     function abrirVideo(video) {
+        videoActual = video;
+        errorVideo.classList.add('d-none');
+        errorVideo.innerHTML = '';
+
         tituloModal.textContent = video.titulo;
         descripcionModal.textContent = video.descripcion;
 
@@ -344,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             reproductor.removeAttribute('src');
             reproductor.classList.add('d-none');
+            mostrarErrorVideo();
         }
 
         const modal = new bootstrap.Modal(modalVideo);
@@ -363,11 +395,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Si el archivo del video está caído, avisamos en vez de dejar el cuadro negro
+    reproductor.addEventListener('error', () => {
+        if (!reproductor.getAttribute('src')) {
+            return;
+        }
+
+        mostrarErrorVideo();
+    });
+
     // Al cerrar la modal, paramos el video
     modalVideo.addEventListener('hidden.bs.modal', () => {
         reproductor.pause();
         reproductor.removeAttribute('src');
         reproductor.load();
+        reproductor.classList.remove('d-none');
+        errorVideo.classList.add('d-none');
+        errorVideo.innerHTML = '';
+        videoActual = null;
     });
 
     // Botón "Ver Video" de cada tarjeta
