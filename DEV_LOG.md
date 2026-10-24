@@ -164,10 +164,6 @@ _What must be done next to build on this session's progress?_
 3. Film original videos to put in the video library.
 
 
-
-awjwbhxwbwdb
-
-
 ## Session [4] Log Entry
 
 ### ⏱️ Session Overview
