@@ -162,3 +162,152 @@ _What must be done next to build on this session's progress?_
 1. Learn React to implement it on the server.
 2. Get better colors for the webpages.
 3. Film original videos to put in the video library.
+
+
+## Session [4] Log Entry
+
+### ⏱️ Session Overview
+
+- **Date:** 2026-10-09
+- **Module/Feature Scope:** Modularize CSS architecture
+- **Est. Time Invested:** 2.0 hours
+- **Active Developers:** Santiago López Estrada
+
+### 🎯 Session Goals
+
+- [x] Goal 1: Separate global styles from page-specific layouts
+- [x] Goal 2: Refactor stylesheets to eliminate code duplication
+- [x] Goal 3: Improve CSS maintainability for team collaboration
+
+### 🔨 Tasks Completed
+
+- [x] **Architecture:** Split monolithic styling into dedicated stylesheets (`global.css`, `consultorio.css`, etc.).
+- [x] **Optimization:** Reorganized CSS variables and utility classes across all main views.
+
+### 🧠 Concepts Mastered & Key Learnings
+
+- **CSS Modularization:** Understanding how structured file separation prevents specificity conflicts and makes large projects scalable for collaborative teams.
+
+### 🛠️ Systematic Bug & Error Tracker
+
+- **Roadblock 1 (The Error):**
+  - ❌ _Error Message / Behavior:_ Page elements broke layout when styles were split into separate files.
+  - ⚙️ _Diagnostic Action:_ Checked stylesheet import hierarchy in the HTML head sections.
+  - ✅ _Root Cause & Resolution:_ Adjusted link loading order so `global.css` loads prior to view-specific stylesheets.
+
+### 🔮 Next Horizon Actions
+
+1. Prepare backend environment for API integration.
+
+---
+
+## Session [5] Log Entry
+
+### ⏱️ Session Overview
+
+- **Date:** 2026-10-12
+- **Module/Feature Scope:** Add Express server, REST API endpoints, and Virtual Consultation view
+- **Est. Time Invested:** 3.0 hours
+- **Active Developers:** Santiago López Estrada
+
+### 🎯 Session Goals
+
+- [x] Goal 1: Initialize Express server environment in Node.js
+- [x] Goal 2: Create initial RESTful API routes
+- [x] Goal 3: Build Virtual Consultory interface base (`consultorio.html`)
+
+### 🔨 Tasks Completed
+
+- [x] **Backend setup:** Structured Express server.
+- [x] **API Endpoints:** Created base controller logic for incoming user queries.
+- [x] **Consultory UI:** Drafted consultation form and integrated layout with main navigation.
+
+### 🧠 Concepts Mastered & Key Learnings
+
+- **Client-Server Communication:** Consolidated knowledge on how asynchronous HTTP requests bridge client-side forms with backend Express controllers.
+
+### 🛠️ Systematic Bug & Error Tracker
+
+- **Roadblock 1 (The Error):**
+  - ❌ _Error Message / Behavior:_ `POST` requests were returning `undefined` body payloads on the server.
+  - ⚙️ _Diagnostic Action:_ Inspected Express middleware configuration in `server.js`.
+  - ✅ _Root Cause & Resolution:_ Added `express.json()` middleware to parse incoming JSON request bodies.
+
+### 🔮 Next Horizon Actions
+
+1. Integrate external AI services into backend controllers.
+
+---
+
+## Session [6] Log Entry
+
+### ⏱️ Session Overview
+
+- **Date:** 2026-10-21
+- **Module/Feature Scope:** Gemini API integration for virtual consultory
+- **Est. Time Invested:** 3.0 hours
+- **Active Developers:** Santiago López Estrada
+
+### 🎯 Session Goals
+
+- [x] Goal 1: Connect Express backend with Google Gemini AI API
+- [x] Goal 2: Secure API keys using environment variables
+- [x] Goal 3: Establish system prompts for medical guidance
+
+### 🔨 Tasks Completed
+
+- [x] **API Integration:** Implemented asynchronous fetch requests to Google Gemini REST API.
+- [x] **Security:** Configured `dotenv` and `.gitignore` to protect sensitive credentials.
+- [x] **System Instruction:** Prompt engineered Gemini to deliver appropiate message to users
+
+### 🧠 Concepts Mastered & Key Learnings
+
+- **API Prompt Engineering & Security:** Learned how system instructions constrain LLM outputs to specific contexts while enforcing environment variable security.
+
+### 🛠️ Systematic Bug & Error Tracker
+
+- **Roadblock 1 (The Error):**
+  - ❌ _Error Message / Behavior:_ API Key exposing warning during local commits.
+  - ⚙️ _Diagnostic Action:_ Checked Git tracking status on configuration files.
+  - ✅ _Root Cause & Resolution:_ Added `.env` to `.gitignore` and migrated sensitive keys to local environment variables.
+
+### 🔮 Next Horizon Actions
+
+1. Refine consultory interface and add dynamic tips to home page.
+
+---
+
+## Session [7] Log Entry
+
+### ⏱️ Session Overview
+
+- **Date:** 2026-10-23
+- **Module/Feature Scope:** Refactor Consultorio Virtual view, integrate dynamic AI health tips, and implement API resilience
+- **Est. Time Invested:** 2.5 hours
+- **Active Developers:** Santiago López Estrada
+
+### 🎯 Session Goals
+
+- [x] Goal 1: Refactor `consultorio.html` to focus exclusively on the AI consultation interface
+- [x] Goal 2: Generate dynamic daily health tips on the home page via Gemini API
+
+### 🔨 Tasks Completed
+
+- [x] **Consultory UI Refactor:** Removed static notice sidebar from `consultorio.html` and centered the form with interactive loading spinners.
+- [x] **Dynamic Tips:** Updated `obtenerAvisos` controller to fetch real-time healthcare tips for `index.html`.
+
+### 🧠 Concepts Mastered & Key Learnings
+
+- **API integration** It was very similar to the last integration.
+
+### 🛠️ Systematic Bug & Error Tracker
+
+- **Roadblock 1 (The Error):**
+  - ❌ _Error Message / Behavior:_ `503 UNAVAILABLE` error from Gemini API causing home page tip section to crash.
+  - ⚙️ _Diagnostic Action:_ Inspected server console logs and checked HTTP response codes from external endpoint.
+  - ✅ _Root Cause & Resolution:_ Implemented a `try/catch` fallback block returning default caregiving advice when third-party API spikes occur.
+
+### 🔮 Next Horizon Actions
+
+1. Add INADEJ's videos to the videoteca
+2. Integrate them with the filter and search system

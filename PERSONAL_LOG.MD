@@ -62,6 +62,22 @@ For this milestone, I worked on setting up the backend structure for our project
 
 In this session, I integrated the external Google Gemini AI API into our backend controller (`consultaController.js`). I configured environment variables using `dotenv` to securely store API keys without exposing them in the repository, and updated `.gitignore` accordingly. I also implemented system instructions to ground Gemini’s responses so it acts as an empathetic medical assistant tailored specifically to INADEJ's "Contigo en Casa" program in Arandas.
 
+
+
+## Personal Session [5] Log Entry
+
+### ⏱️ Session Overview
+
+- **Date:** 2026-10-23
+- **Module/Feature Scope:** Refactor Consultorio Virtual view and integrate dynamic AI health tips
+
+### Notes about my work
+
+In this session, I refactored `consultorio.html` and its client script (`consultorio.js`) to focus exclusively on the AI Virtual Consultation form, making sure there are interactive loading states, and clean response containers. I also extended our Google Gemini AI integration to dynamically generate daily medical and caregiving tips on the home page (`index.html`). I also created the (`index.js`) file to integrate the AI tips and other details
+
 ### Notes about my teammates work (2nd delivery)
 
+Adrian did a very good job implementing, first, the test videos (until we get the real vidos from INADEJ) and making the video library page work. He included tags for all the videos and implemented a filter based on this tags, so users can easily filter out the videos they are not interested in. He also implemented a search system so users can search for the video itself, which is really useful.
+He also solved an issue with github pages.
 
+Victor's computer is not working so he was not able to work in the project yet, but I hope we can work together for the final delivery.
