@@ -163,3 +163,60 @@ _How does this code integrate with the rest of your system? What is the core mec
 - [ x ] We can explain every single line of this code.
 - [ x ] We understand how the asynchronous operations/CSS classes used here affect other components.
 - [ x ] We know exactly which file and line numbers this code is located in our repository.
+
+
+## Week [3] Log Entry
+
+### 1. High-Level Goal
+
+- **Modularizing CSS Architecture & Initializing Backend:** Reorganizing a growing, monolithic CSS codebase into clean, dedicated component files and setting up a Node.js Express server with REST API endpoints and Virtual Consultation views (`consultorio.html`).
+
+### 2. The Interaction Log
+
+| AI Tool Used | Exact Initial Prompt | What the AI Generated (Summary/Snippet) |
+| :--- | :--- | :--- |
+| *Gemini* | *"How can I refactor a growing CSS file into a clean, modular structure for components and layouts in a Node/Express project?"* | Suggested splitting styles into dedicated files (`global.css`, `consultorio.css`) to prevent specificity conflicts and ease team collaboration. |
+| *Gemini* | *"How do I initialize an Express server in Node.js, configure JSON body-parsing middleware, and handle basic HTTP errors for routes?"* | Provided Express boilerplate code (`express()`, `express.json()`) and route configurations for incoming API requests. |
+
+### 3. The Human Audit & Modifications
+
+- **What we changed/added:** We modularized the style files according to our exact directory tree, ensuring that `global.css` loads prior to view-specific stylesheets. We also configured Express middleware explicitly to handle incoming JSON payloads from the consultation forms.
+
+### 4. Integration & Learnings
+
+- **Core Mechanics:** CSS modularity scales projects efficiently when multiple developers collaborate. Understanding Express middleware is essential for safely routing asynchronous frontend data to backend controllers.
+
+### 5. Oral Defense Self-Check
+
+- [x] We can explain every single line of this code.
+- [x] We understand how the asynchronous operations/CSS classes used here affect other components.
+- [x] We know exactly which file and line numbers this code is located in our repository.
+
+---
+
+## Week [4] Log Entry
+
+### 1. High-Level Goal
+
+- **Google Gemini AI Integration and System Architecture Refactoring:** Connecting the backend controller (`consultaController.js`) to the Gemini AI API, securing credentials via `dotenv`, implementing prompt engineering for healthcare guidance, refactoring the consultorio UI, and generating dynamic AI health tips with fallback resilience.
+
+### 2. The Interaction Log
+
+| AI Tool Used | Exact Initial Prompt | What the AI Generated (Summary/Snippet) |
+| :--- | :--- | :--- |
+| *Gemini* | *"How do I securely call the Google Gemini REST API from an Express controller using `fetch` and system instructions for an empathetic medical assistant?"* | Generated an asynchronous `async/await` fetch structure passing `system_instruction` and user contents safely using environment variables (`process.env.AI_API_KEY`). |
+| *Gemini* | *"How can I refactor the consultorio view to focus solely on the AI form and dynamically pull real-time health tips on the homepage with a fallback mechanism?"* | Provided refactored HTML templates with loading spinner states, along with a `try/catch` fallback pattern in the controller to handle API rate limits (`503 UNAVAILABLE`) gracefully. |
+
+### 3. The Human Audit & Modifications
+
+- **What we changed/added:** We tailored the system prompt specifically for INADEJ's "Contigo en Casa" program in Arandas, restricting the AI to safe, preliminary caregiving guidance. We also cleaned up client-side template scripts (`index.js`, `consultorio.js`) to show the AI answers. Also, for the fallback patterns, the AI provided a confusing solution that used different API models, so a knew API key needed to be used. Since the code was significantly harder to understand implementing this, we didn´t implement this fallback mechanism.
+
+### 4. Integration & Learnings
+
+- **Core Mechanics:** Environment variable isolation protects sensitive keys from public exposure. The AI shows it´s answers on the desired pages, although it can be really slow since we are using a free tier model.
+
+### 5. Oral Defense Self-Check
+
+- [x] We can explain every single line of this code.
+- [x] We understand how the asynchronous operations/CSS classes used here affect other components.
+- [x] We know exactly which file and line numbers this code is located in our repository.
